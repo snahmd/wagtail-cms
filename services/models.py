@@ -17,6 +17,11 @@ class ServiceListingPage(Page):
     FieldPanel('subtitle'),
   ]
 
+  def get_context(self, request, *args, **kwargs):
+    context = super().get_context(request, *args, **kwargs)
+    context['services'] = ServicePage.objects.live().public()
+    return context
+
 class ServicePage(Page):
   
   description = models.TextField(
