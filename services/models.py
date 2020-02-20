@@ -18,6 +18,7 @@ class ServiceListingPage(Page):
   ]
 
 class ServicePage(Page):
+  
   description = models.TextField(
     blank=True,
     max_length=500,
