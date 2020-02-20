@@ -1,4 +1,4 @@
-#!/Users/ahmedsan/Desktop/rocketman/venv/bin/python
+#!/Users/ahmedsan/Desktop/mysite/venv/bin/python
 
 import sys
 import getopt
