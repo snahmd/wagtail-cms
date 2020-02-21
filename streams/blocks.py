@@ -83,3 +83,30 @@ class CardsBlock(blocks.StructBlock):
       #    ("external_link", blocks.URLBlock(required=False)),
       #  ]
      # )
+
+class ImageAndTextBlock(blocks.StructBlock):
+  image = ImageChooserBlock(
+    help_text="Image the automatically cropped to 786px by 552px",
+  )
+  image_alignment = blocks.ChoiceBlock(
+    choices=(  
+      ("left", "Image to the left"),
+      ("right", "Image to the right"),
+    ),
+    default='left',
+    help_text='Image on the left with text on the right. Or image on the right with text on the left.',
+  )
+  title = blocks.CharBlock(
+    max_length=60,
+    help_text='Max length of 60 characters.',
+  )
+  text = blocks.CharBlock(
+    max_length=140,
+    required= False
+  )
+  link = Link()
+
+  class Meta:
+    template = "streams/image_and_text_block.html"
+    icon = "image"
+    label = "Image & Text" 
