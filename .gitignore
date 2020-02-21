@@ -57,3 +57,5 @@ local.py
 .env
 
 nginx-error.log
+
+packege-lock.json
