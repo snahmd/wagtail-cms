@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
 
 from modelcluster.models import ParentalKey
 
@@ -7,7 +8,27 @@ from wagtail.admin.edit_handlers import FieldPanel, InlinePanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.core.fields import RichTextField
 
-class FormField(AbstractFormField):
+FORM_FIELD_CHOICES = (
+    ('singleline', _('Single line text')),
+    ('multiline', _('Multi-line text')),
+    ('email', _('Email')),
+    ('url', _('URL')),
+    ('number', _('Number')),
+)
+
+class CustomAbstractFormField(AbstractFormField):
+  field_type = models.CharField(
+    verbose_name="Field Type",
+    max_length=16,
+    choices=FORM_FIELD_CHOICES,
+  )
+
+  class Meta:
+    abstract = True
+    ordering = ["sort_order"]
+
+
+class FormField(CustomAbstractFormField):
   page = ParentalKey(
     "ContactPage",
     on_delete=models.CASCADE,
