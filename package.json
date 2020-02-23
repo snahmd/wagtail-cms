@@ -2,6 +2,7 @@
   "name": "rocketman",
   "version": "1.0.0",
   "description": "",
+  "main": "gulpfile.js",
   "scripts": {
     "js": "parcel watch frontend/js/src/index.js --out-dir rocketman/static/js/ --no-hmr",
     "js:prod": "parcel build frontend/js/src/index.js --out-dir rocketman/static/js/ --no-cache --no-source-maps",
@@ -11,6 +12,8 @@
     "watch": "npm run js & npm run sass"
   },
   "dependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
     "bootstrap": "^4.3.1",
@@ -21,9 +24,6 @@
     "popper.js": "^1.15.0",
     "sass": "^1.17.2"
   },
-  "devDependencies": {
-    "@babel/core": "^7.7.7",
-    "@babel/preset-env": "^7.7.7"
-  },
+  "devDependencies": {},
   "author": "Kalob Taulien"
 }
