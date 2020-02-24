@@ -1,3 +1,5 @@
+from django.core.cache import cache
+from django.core.cache.utils import make_template_fragment_key
 from django.db import models
 from django_extensions.db.fields import AutoSlugField
 
@@ -63,3 +65,13 @@ class Menu(ClusterableModel):
 
   def __str__(self):
     return self.title
+
+  def save(self, **kwargs):
+
+    key = make_template_fragment_key("site_header")
+    cache.delete(key)
+
+    key = make_template_fragment_key("site_footer")
+    cache.delete(key)
+
+    return super().save(**kwargs)  
